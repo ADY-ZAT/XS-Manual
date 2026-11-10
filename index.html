@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Manual - MARSHAL</title>
+  <meta name="description" content="MARSHAL Motorcycle Maintenance Manuals">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff;
+      color: #222;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ========== 顶栏 ========== */
+    .header {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 16px 0;
+      border-bottom: 3px solid #c8102e; /* 品牌红 */
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+
+    .header-title {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      font-weight: 400;
+    }
+
+    .footer-logo img {
+      height: 36px;
+      width: auto;
+      margin-bottom: 10px;
+    }
+
+    /* ========== 主内容区 ========== */
+    .main {
+      flex: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 50px 20px 60px;
+      width: 100%;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 12px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .page-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 1.05rem;
+    }
+
+    /* 车型卡片网格 */
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .model-card {
+      background: #f8f9fa;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .model-card:hover {
+      border-color: #c8102e;
+      box-shadow: 0 8px 20px rgba(200, 16, 46, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .model-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .model-desc {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .model-btn {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .model-card:hover .model-btn {
+      background: #c8102e;
+    }
+
+    /* 提示框 */
+    .note {
+      margin-top: 50px;
+      background: #fff8f0;
+      border-left: 4px solid #c8102e;
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    /* ========== 底栏 ========== */
+    .footer {
+      background: #1a1a1a;
+      color: #ccc;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: #c8102e;
+    }
+
+    .footer-logo {
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .page-title {
+        font-size: 1.6rem;
+      }
+      .header-title {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== 顶栏 ==================== -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="https://www.marshalmoto.com/" class="logo" target="_blank">
+        <img src="https://www.marshalmoto.com/upload/20261008/165551_95302.png" alt="MARSHAL">
+      </a>
+      <div class="header-title">Motorcycle Maintenance Manual</div>
+    </div>
+  </header>
+
+  <!-- ==================== 主内容 ==================== -->
+  <main class="main">
+    <h1 class="page-title">Maintenance Manual</h1>
+    <p class="page-subtitle">Select a model to view or download the maintenance manual (PDF)</p>
+
+    <div class="model-grid">
+
+      <!-- 
+        ============================================
+        【重要】如何修改 PDF 链接（给自己看的注释）
+        ============================================
+        
+        1. 把 PDF 文件上传到仓库的 pdf/ 文件夹里
+           例如：pdf/JOY125.pdf、pdf/XS250.pdf 等
+
+        2. 把下面每个 <a> 标签的 href 改成对应的文件路径：
+           - 相对路径写法（推荐）：href="pdf/JOY125.pdf"
+           - 这样在 GitHub Pages 上点击后会直接打开/下载 PDF
+
+        3. 如果想让用户在新标签页打开，保留 target="_blank"
+
+        4. CG50 目前还没做好，先指向官网。
+           等 PDF 准备好后，把 href 改成 "pdf/CG50.pdf" 即可。
+      -->
+
+      <!-- CG50 - 暂时指向官网示例 -->
+      <a class="model-card" href="https://www.marshalmoto.com/" target="_blank">
+        <div class="model-name">CG50</div>
+        <div class="model-desc">Maintenance Manual</div>
+        <span class="model-btn">View Manual</span>
+      </a>
+      <!-- 
+        CG50 替换示例（准备好 PDF 后把上面整个 <a> 换成下面这段）：
+        <a class="model-card" href="pdf/CG50.pdf" target="_blank">
+          <div class="model-name">CG50</div>
+          <div class="model-desc">Maintenance Manual</div>
+          <span class="model-btn">View Manual</span>
+        </a>
+      -->
+
+      <!-- JOY125 -->
+      <a class="model-card" href="https://raw.githubusercontent.com/ADY-ZAT/XS-Manual/main/JOY125.pdf" target="_blank">
+        <div class="model-name">JOY125</div>
+        <div class="model-desc">Maintenance Manual</div>
+        <span class="model-btn">View Manual</span>
+      </a>
+
+      <!-- XS250 -->
+      <a class="model-card" href="https://raw.githubusercontent.com/ADY-ZAT/XS-Manual/main/XS250.pdf" target="_blank">
+        <div class="model-name">XS250</div>
+        <div class="model-desc">Maintenance Manual</div>
+        <span class="model-btn">View Manual</span>
+      </a>
+
+      <!-- XS800 Series -->
+      <a class="model-card" href="https://raw.githubusercontent.com/ADY-ZAT/XS-Manual/main/XS800.pdf" target="_blank">
+        <div class="model-name">XS800 Series</div>
+        <div class="model-desc">Maintenance Manual</div>
+        <span class="model-btn">View Manual</span>
+      </a>
+
+      <!-- 第5个车型位置（你可根据需要修改名称和链接） -->
+<!--
+      <a class="model-card" href="pdf/XS800-Series.pdf" target="_blank">
+        <div class="model-name">XS800 Series</div>
+        <div class="model-desc">Maintenance Manual (Alt)</div>
+        <span class="model-btn">View Manual</span>
+      </a>
+-->
+      <!-- 
+        如果你其实只有 4 个车型，把上面这个第5个卡片删掉即可。
+        如果需要第5个不同车型，修改 model-name 和 href 路径。
+      -->
+
+    </div>
+
+    <div class="note">
+    &nbsp;Click the button to download the file</div>
+  </main>
+
+  <!-- ==================== 底栏 ==================== -->
+  <footer class="footer">
+    <a href="https://www.marshalmoto.com/" class="footer-logo" target="_blank">
+      <img src="https://www.marshalmoto.com/upload/20261008/165551_95302.png" alt="MARSHAL">
+    </a>
+    <div>© 2026 MARSHAL. All rights reserved.</div>
+    <div style="margin-top: 6px; opacity: 0.7;">
+      Official Website: <a href="https://www.marshalmoto.com/" target="_blank">www.marshalmoto.com</a>
+    </div>
+  </footer>
+
+</body>
+</html>
